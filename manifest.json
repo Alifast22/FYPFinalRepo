@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "URL Navigation with Consent",
+    "version": "1.0",
+    "description": "Ask for user consent before navigating to a URL",
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "permissions": ["activeTab","tabs", "notifications"]
+ 
+
+
+  }
+  
