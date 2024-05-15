@@ -2,19 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>URL Navigation with Consent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Selection</title>
     <style>
         body {
-            width: 300px;
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .popup {
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>URL Navigation with Consent</h1>
-    <p>Enter a URL:</p>
-    <input type="url" id="urlInput" placeholder="https://example.com">
-    <button id="openPageButton">Open Page</button>
+    <div class="popup">
+        <h2 id="modeTitle">Detailed Mode Selected</h2>
+        <button id="toggleMode">Switch to Normal Mode</button>
+        <button id="viewReport">View Report</button> <!-- Added "View Report" button -->
+    </div>
 
     <script src="popup.js"></script>
 </body>

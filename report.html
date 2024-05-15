@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .report-container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .feature-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .feature-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .feature-description {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Phishing Report</h1>
+    <div class="report-container">
+        <h2>URL: <span id="url"></span></h2>
+        <h3>Suspicious Features:</h3>
+        <div id="feature-list"></div>
+    </div>
+    <script src="generate_report.js"></script>
+</body>
+</html>

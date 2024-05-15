@@ -8,47 +8,57 @@ document.body.addEventListener('click', function(event) {
         // Fetching URL data from the Flask server
         let url_to_check = urlelement.href;
         let server_url = "http://127.0.0.1:5000/check_phishing";
-        let payload = { url: url_to_check };
-
-        fetch(server_url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload)
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } 
-            else {
-                console.log("Network response was not ok")
-                throw new Error('Network response was not ok: ' + response.status_code);
-            }
-        })
-        .then(data => {
-            if ('error' in data) {
-                console.log(data)
-                alert(data)
-                console.log("Error:", data['error']);
-            } 
-            else {
-                console.log("URL:", data['url']);
-                console.log("Phishing:", data['phishing']);
-                chrome.runtime.sendMessage({url: urlelement.href, value:data['phishing']});
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        })
-        .finally(() => {
-            // Hide loading indicator when response is received
-            hideLoadingIndicator();
+        chrome.storage.local.get(['mode'], function(result) {
+            let selectedMode = result.mode === 'user';
+            let payload = { url: url_to_check, mode: selectedMode};
+            fetch(server_url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } 
+                else {
+                    console.log("Network response was not ok")
+                    throw new Error('Network response was not ok: ' + response.status_code);
+                }
+            })
+            .then(data => {
+                if ('error' in data) {
+                    console.log(data)
+                    alert(data)
+                    console.log("Error:", data['error']);
+                } 
+                else {
+                    console.log("URL:", data['url']);
+                    console.log("Phishing:", data['phishing']);
+                    if (selectedMode == false){
+                        chrome.storage.local.set({phishing_report: data['phishy_features']})
+                        chrome.storage.local.set({phishing_url: data['url']})
+                        chrome.runtime.sendMessage({url: urlelement.href, value:data['phishing'], features:data['phishy_features']});
+                    }
+                    else{
+                        chrome.runtime.sendMessage({url: urlelement.href, value:data['phishing'], features:[]});
+                    }
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            })
+            .finally(() => {
+                // Hide loading indicator when response is received
+                hideLoadingIndicator();
+            });
         });
 
         return false
     }
 });
+
 function findParentAnchor(element) {
     console.log(element)
     if (!element) return null;
