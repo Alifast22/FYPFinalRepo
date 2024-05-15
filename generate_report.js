@@ -55,7 +55,6 @@ chrome.storage.local.get(['phishing_report'], function(result) {
                 'Iframe': 'Checks for the presence of iframes within the webpage. Phishers may use iframes to load content from malicious sources or to overlay legitimate content with phishing forms.',
                 'DNSRecord': 'Verifies the DNS record of the domain. Discrepancies or inconsistencies in DNS records may indicate phishing attempts.',
                 'age_of_domain': 'Measures the age of the domain. Phishing sites may have recently registered domains, whereas legitimate sites often have longer histories.',
-                'web_traffic': 'Analyzes the web traffic of the domain. A sudden spike in traffic to a previously low-traffic site may indicate a phishing campaign.',
                 'Google_Index': 'Checks if the webpage is indexed by Google. Phishing sites may not be indexed or may be flagged by Google Safe Browsing.',
                 'Links_pointing_to_page': 'Counts the number of external links pointing to the webpage. Phishing sites may have fewer external links or links from suspicious sources.',
                 'Statistical_report': 'Provides a statistical analysis of various features for phishing detection purposes, such as clustering or classification algorithms.'
