@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateModeDisplay(isUserMode) {
         if (isUserMode) {
             modeTitle.textContent = 'Normal Mode Selected';
-            toggleButton.textContent = 'Switch to Detailed Mode';
+            toggleButton.textContent = 'Detailed Mode';
             viewReportButton.style.display = 'none'; // Hide "View Report" button in user mode
         } else {
             modeTitle.textContent = 'Detailed Mode Selected';
-            toggleButton.textContent = 'Switch to Normal Mode';
+            toggleButton.textContent = 'Normal Mode';
             viewReportButton.style.display = 'block'; // Show "View Report" button in admin mode
         }
     }

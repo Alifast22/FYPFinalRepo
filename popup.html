@@ -11,27 +11,48 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100vh;
             margin: 0;
+            background-color: #f0f0f0;
         }
         .popup {
             border: 1px solid #ccc;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 100%;
         }
         .popup button {
-            margin: 10px;
-            padding: 10px 20px;
+            margin: 10px 0px 10px -1px;
+            padding: 10px;
             font-size: 16px;
             cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007BFF;
+            height: 50%;
+            width: 100%;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .popup button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .popup button:focus {
+            outline: none;
+            background-color: #004085;
         }
     </style>
 </head>
 <body>
     <div class="popup">
         <h2 id="modeTitle">Detailed Mode Selected</h2>
-        <button id="toggleMode">Switch to Normal Mode</button>
-        <button id="viewReport">View Report</button> <!-- Added "View Report" button -->
+        <hr/>
+        <button id="toggleMode">Normal Mode</button>
+        <button id="viewReport">View Report</button>
     </div>
 
     <script src="popup.js"></script>

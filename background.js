@@ -49,3 +49,4 @@ chrome.runtime.onMessage.addListener(function(message, sender) {
         chrome.tabs.update(sender.tab.id, { url: message.url });
     }
 });
+

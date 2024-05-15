@@ -10,21 +10,23 @@ chrome.storage.local.get(['phishing_report'], function(result) {
             // Function to generate HTML card for each feature
             function createFeatureCard(featureName, description) {
                 const card = document.createElement('div');
-                card.classList.add('card');
+                card.classList.add('feature-card');
 
-                const cardContent = document.createElement('div');
-                cardContent.classList.add('card-content');
+                const title = document.createElement('div');
+                title.classList.add('feature-name');
+                title.innerText = featureName + ':';
+                title.addEventListener('click', function() {
+                    // Toggle display of card description
+                    descriptionElement.style.display = descriptionElement.style.display === 'block' ? 'none' : 'block';
+                });
 
-                const span = document.createElement('span');
-                span.classList.add('card-title');
-                span.innerText = featureName+':';
+                const descriptionElement = document.createElement('div');
+                descriptionElement.classList.add('feature-description');
+                descriptionElement.innerText = description;
+                descriptionElement.style.display = 'none';  // Initially hide the description
 
-                const p = document.createElement('p');
-                p.innerText = description;
-
-                cardContent.appendChild(span);
-                cardContent.appendChild(p);
-                card.appendChild(cardContent);
+                card.appendChild(title);
+                card.appendChild(descriptionElement);
 
                 featureList.appendChild(card);
             }
