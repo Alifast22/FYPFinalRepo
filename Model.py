@@ -121,13 +121,15 @@ def extract_phishing_features(url):
         data_set.append({'SSLfinal_State':-1})
 
     # 9.Domain_registeration_length
-    expiration_date = whois_response.expiration_date
+    registration_date_list = whois_response.creation_date
+    if isinstance(registration_date_list,list):
+        registration_date = registration_date_list[0]
+    else:
+        registration_date=registration_date_list
     registration_length = 0
     try:
-        expiration_date = min(expiration_date)
-        today = time.strftime('%Y-%m-%d')
-        today = datetime.strptime(today, '%Y-%m-%d')
-        registration_length = abs((expiration_date - today).days)
+        today = datetime.today()
+        registration_length = abs((today-registration_date).days)
 
         if registration_length / 365 <= 1:
             data_set.append({'Domain_registeration_length':-1})

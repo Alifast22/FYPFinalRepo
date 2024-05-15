@@ -39,7 +39,7 @@ def predict_result(features):
     print(prediction_3)
     print("_______________________")
     # Aggregate predictions by majority vote
-    final_prediction = max(set([prediction_1[0]]), key=[prediction_1[0]].count)
+    final_prediction = max(set([prediction_1[0],prediction_2[0]]), key=[prediction_1[0],prediction_2[0]].count)
     return final_prediction
 
 @app.route('/check_phishing', methods=['POST'])
