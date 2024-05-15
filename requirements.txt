@@ -1,8 +1,11 @@
 joblib
 pandas
-scikit-learn
+scikit-learn==1.3.2
 ipaddress
 beautifulsoup4
 requests
 google
 python-whois
+Flask
+gunicorn
+flask-CORS
